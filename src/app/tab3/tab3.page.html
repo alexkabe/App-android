@@ -1,0 +1,134 @@
+
+<ion-header >
+  <ion-toolbar>
+    <ion-item lines="none">
+      
+      <ion-button slot="start" fill="clear"  (click)="onClose()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-title>Facture</ion-title>
+      <ion-button [disabled]="numero === 0 || articleChoisi.length == 0"  fill="clear" (click)="ouverture($event)" slot="end">
+        <ion-icon name="checkmark" color="primary"></ion-icon>
+      </ion-button> 
+    </ion-item>
+  </ion-toolbar> 
+</ion-header>
+
+
+
+      
+
+<ion-content >
+  <ion-item lines="none">
+    <ion-label>
+      Facture à:
+    </ion-label>
+  </ion-item>
+
+  <div class="tirage" *ngIf="numtest !== 0">
+    <ion-card text="wrap" (click)="openClient()">
+      <ion-item lines="none">
+        <ion-label slot="start">{{clients[numClient].code}}</ion-label>
+      </ion-item>
+      <ion-item lines="none" >
+        <ion-label slot="start">{{clients[numClient].nom}}</ion-label>
+        <ion-label slot="end">{{clients[numClient].prenom}}</ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <ion-item lines="none" *ngIf="numtest === 0">
+    <ion-button fill="clear" (click)="openClient()" >
+      <ion-icon name="add" slot="start" ></ion-icon>Ajouter un client
+    </ion-button>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label slot="start">Article</ion-label>
+    <ion-label slot="end">Quantite </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-button fill="clear" *ngIf="numtest !== 0" (click)="openArticle()">
+      <ion-icon name="add" slot="start" ></ion-icon>Ajouter un article
+    </ion-button>
+  </ion-item>
+
+    <div class="tirage" *ngFor="let vente of articleChoisi; let i=index">
+            <ion-card text="wrap">
+              <ion-item lines="none">
+                <ion-label slot="start">{{vente.code}}</ion-label>
+                <ion-label > {{vente.prix}} FCFA</ion-label>
+              </ion-item>
+              <ion-item lines="none" >
+                <ion-label slot="start">{{vente.noma}}</ion-label>
+                <ion-label >{{vente.quantite}}</ion-label>
+              
+                <ion-button slot="end" fill="clear" (click)="dropArticle(i)">
+                  <ion-icon name="trash" color="red" ></ion-icon>
+                </ion-button>
+              </ion-item>
+            </ion-card>
+    </div>
+    
+    
+
+  <ion-item lines="none">
+    <ion-label>Total: </ion-label>
+    <ion-label slot="end">{{total}} FCFA</ion-label>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>PSA: </ion-label>
+    <ion-label slot="end">{{psa}} FCFA</ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label>TVA: </ion-label>
+    <ion-label slot="end">{{tva}} FCFA</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Totale Taxe: </ion-label>
+    <ion-label slot="end">{{ttt}} FCFA</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Solde Dù: </ion-label>
+    <ion-label slot="end">{{solde}} FCFA</ion-label>
+  </ion-item>
+</ion-content>
+
+<ion-footer class="main" *ngIf="db.numliste === 1">
+      <ion-item lines="none" >
+        <ion-tab-button >
+          <ion-label>
+            <ion-icon  name="eye"></ion-icon><br>
+              Appercue
+            </ion-label>
+        </ion-tab-button>
+      
+        <ion-tab-button (click)="print()">          
+          <ion-label>
+            <ion-icon  name="send"></ion-icon><br>
+            Envoyer              
+          </ion-label>
+          </ion-tab-button>
+      
+        <ion-tab-button >
+          <ion-label>
+            <ion-icon  name="card"></ion-icon><br>
+                Payer              
+          </ion-label>
+  
+          </ion-tab-button>
+
+          <ion-tab-button >
+            <ion-label>
+              <ion-icon  name="keypad"></ion-icon><br>
+              Plus              
+            </ion-label>
+            </ion-tab-button>
+        </ion-item>
+</ion-footer>
+
+

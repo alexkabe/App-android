@@ -1,0 +1,46 @@
+
+  <ion-header>
+      <div class="titre">
+        <div class="back">
+          <ion-button slot="start" fill="clear" (click)="back()">
+            <ion-icon name="arrow-back"></ion-icon>
+          </ion-button>
+        </div>
+        Pseudo
+        <div class="save">
+          <ion-button slot="end" fill="clear">
+            <ion-icon name="save"></ion-icon>
+          </ion-button>
+          
+        </div>
+      </div>
+      <div class="profil">
+        <img src="../../../assets/Annotation 2020-07-11 155250.png" >
+        <h3>Alex kabe</h3>
+        <p>Alexkabekabe@gmail.com</p>
+      </div>
+      
+  </ion-header>
+
+
+<ion-content>
+  <form >
+    <ion-item>
+      <ion-input placeholder="Mail"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input placeholder="Adresse"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-input placeholder="Telephone"></ion-input>
+    </ion-item>
+    
+    <ion-item button (click)="openAlert()">
+      <ion-label>Changer de mot passe</ion-label>
+    </ion-item>
+  </form>
+</ion-content>
+
+

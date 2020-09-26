@@ -1,0 +1,41 @@
+
+ion-tab-button :active
+{
+    position: relative;
+    animation-duration: 3s;
+    animation-iteration-count: initial;
+}
+.main
+{
+    background-color: none;
+    animation-name: tour;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+@keyframes tour
+{
+    0%
+    {
+        transform: rotateZ(20deg);
+    }
+
+    25%
+    {
+        transform: rotateZ(-20deg);
+    }
+
+    50%
+    {
+        transform: rotateZ(20deg);
+    }
+
+    75%
+    {
+        transform: rotateZ(-20deg);
+    }
+    100%
+    {
+        transform: rotateZ(20deg);
+    }
+}

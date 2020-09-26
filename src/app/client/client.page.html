@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Client</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let client of client2; let i= index">
+    <ion-card-content  (click)="listeClient(i)">{{client.nom}}</ion-card-content>
+  </ion-card>
+</ion-content>

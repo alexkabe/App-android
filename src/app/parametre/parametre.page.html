@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" (click)="back()" routerDirection="forward" >
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    
+    <ion-title>Parametre</ion-title>
+  
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+    <ion-item button  (click)="openProfil()">
+      <ion-icon slot="end" name="person-circle-outline"></ion-icon>
+        <ion-label>Profil
+        </ion-label>
+    </ion-item>
+ 
+  <ion-item>
+    <ion-label>Mode Hors connexion</ion-label>
+    <ion-toggle button></ion-toggle>
+  </ion-item>
+
+  <ion-item button (click)="openToast()">
+    <ion-icon slot="end" name="sync-outline"></ion-icon>
+    <ion-label>Synchroniser</ion-label>
+  </ion-item>
+
+</ion-content>

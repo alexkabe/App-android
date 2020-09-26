@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button fill="clear" (click)="close()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+      Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true">
+  <ion-item lines="none">
+    <ion-avatar ><img src="../../assets/paper_662911.jpg"> </ion-avatar>
+    <ion-card class="carte1">
+      <ion-card-content>Bonjour</ion-card-content>
+    </ion-card>
+  </ion-item>
+  
+  <div *ngFor="let tab of messages; let i =index">
+    <ion-item lines="none">
+      <ion-card slot="end" class="carte2">
+        <ion-card-content>{{tab}}</ion-card-content>
+      </ion-card>
+      <ion-avatar slot="end"><img src="../../assets/paper_652732.jpg"> </ion-avatar>
+    </ion-item>
+</div>
+  
+<ion-list>
+  <ion-item lines="none">
+  </ion-item>
+  <ion-item lines="none">
+  </ion-item>
+</ion-list>
+</ion-content>
+
+<ion-footer class="footer">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <ion-item lines="none" class="textarea" >
+        <ion-textarea name="text" id="text" placeholder="Message" type="text" ngModel required>
+        </ion-textarea>
+        <ion-button shape="round" type="submit" color="success">
+          <ion-icon name="arrow-up"></ion-icon> 
+        </ion-button>
+      </ion-item>
+    </form>
+</ion-footer>

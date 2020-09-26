@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="header">
+      <img class="image" src="../../assets/icon.png">
+      <div class="text">
+        <h6>Connectez vous a votre compte!</h6>
+      </div>
+  </div>
+
+  <div class="body">
+    <div class="box">
+      <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
+        <ion-item>
+            <ion-input type="text" placeholder="Nom d'utilisateur" id="pseudo" name="pseudo" ngModel required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="password" name="password" placeholder="Mot de passe" id="password" ngModel required></ion-input>
+        </ion-item>
+        
+        <br>
+        <div>
+          <ion-checkbox id="souvenir" name="souvenir" ngModel></ion-checkbox>
+          <ion-label>&nbsp;Se souvenir de moi</ion-label>
+        </div><br>
+        
+        <div>
+          <ion-button shape="round" [disabled]="f.invalid" type="submit" fill="outline" expand="block" color="primary">Connexion</ion-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

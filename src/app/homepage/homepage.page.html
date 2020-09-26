@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="first"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>
+      <img src="../..//assets/paper_662911.jpg">
+    </ion-card-title>
+    <ion-card-content>
+      <p>Je suis la page d'accueil et je vous presente le home page</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <p>
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+      Voici de quoi ecrire du texte
+    </p>    
+  </ion-item>  
+  <ion-card>
+    <ion-card-content>
+      <ion-label>
+        <ion-icon name="logo-facebook"></ion-icon>
+        Facebook</ion-label>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>      
+      <ion-label>
+        <ion-icon name="logo-google"></ion-icon>
+        Nos differents sites
+      </ion-label>
+    </ion-card-content>
+  </ion-card>  
+  <ion-card>
+    <ion-card-content>
+      <ion-label>
+        <ion-icon name="logo-twitter"></ion-icon>
+        Contactez-nous...
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+    <ion-fab vertical="bottom" horizontal="end">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button routerLink="/tabs/tab1" routerDirection="forward"><ion-icon name="logo-buffer"></ion-icon></ion-fab-button>
+        <ion-fab-button (click)="openCli()" routerDirection="forward"><ion-icon name="person-circle-outline"></ion-icon></ion-fab-button>
+        <ion-fab-button (click)="openChat()" routerDirection="forward"><ion-icon name="mail"></ion-icon></ion-fab-button>
+        <ion-fab-button routerLink="/tabs/tab3" routerDirection="forward"><ion-icon name="add"></ion-icon></ion-fab-button>
+        <ion-fab-button routerLink="/admin" routerDirection="forward"><ion-icon name="remove"></ion-icon></ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>

@@ -1,0 +1,10 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Liste d'articles</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngFor="let article of article">
+    <ion-card-content (click)="listeArticle(article)">{{article.noma}}</ion-card-content>
+  </ion-card>
+</ion-content>

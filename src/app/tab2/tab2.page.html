@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-button fill="clear" routerLink='/tabs/tab1' routerDirection="forward"><ion-icon name="arrow-back"></ion-icon></ion-button>
+      Data Desease Covid 19 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <h1>LISTE DES PAYS! Cliquer </h1>
+  <div *ngFor="let pays of pays; let i = index">
+    <ion-item button (click)="openModal(i)">
+      <ion-title>{{pays.country}}</ion-title>
+    </ion-item>
+  </div>
+</ion-content>

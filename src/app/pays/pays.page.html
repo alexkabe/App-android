@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-button fill="clear" routerLink="/tabs/tab2/true" routerDirection="forward"><ion-icon name="arrow-back"></ion-icon></ion-button>
+      {{pays.country}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item><ion-label>Cas: {{pays.cases}}</ion-label></ion-item>
+    <ion-item><ion-label>Mort: {{pays.deaths}}</ion-label></ion-item>
+    <ion-item><ion-label>Gueris: {{pays.recovered}}</ion-label></ion-item>
+    <ion-item><ion-label>Cas critique: {{pays.critical}}</ion-label></ion-item>
+  
+</ion-content>
