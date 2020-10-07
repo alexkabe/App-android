@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { Network } from '@ionic-native/network/ngx';
+import { NavController, ToastController } from '@ionic/angular';
 import {Storage } from '@ionic/storage';
 
 @Component({
@@ -12,9 +13,38 @@ export class HomepagePage implements OnInit {
 
   constructor(private router: Router,
               private navigate: NavController,
-              private storage: Storage) { }
+              private network: Network,
+              private toastController: ToastController)
+  {
+
+  }
 
   ngOnInit() {
+    this.network.onConnect().subscribe(() => {
+      this.presentToast();
+    });
+    this.network.onDisconnect().subscribe(() => {
+      this.presentToast2();
+    });
+
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Vous etes connecter',
+      position: 'top',
+      duration: 5000
+    });
+    toast.present();
+  }
+
+  async presentToast2() {
+    const toast = await this.toastController.create({
+      message: 'Vous etes deconnecter',
+      position: 'top',
+      duration: 5000
+    });
+    toast.present();
   }
 
   openChat()
@@ -24,7 +54,6 @@ export class HomepagePage implements OnInit {
 
   logger() {
     this.navigate.navigateRoot(['login']);
-    this.storage.remove('User');
   }
 
     openCli()

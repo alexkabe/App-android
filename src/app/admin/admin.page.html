@@ -14,19 +14,19 @@
     <ion-card-content>
       <form (ngSubmit)="addClient(client)" #client="ngForm">
         <ion-item>
-          <ion-input type="text" placeholder="Code" ngModel name="code" id="code"></ion-input>
+          <ion-input type="text" placeholder="Code" ngModel name="code" id="code" required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Nom" name="nom" id="nom" ngModel></ion-input>
+          <ion-input type="text" placeholder="Nom" name="nom" id="nom" ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Prenom" name="prenom" id="prenom" ngModel></ion-input>
+          <ion-input type="text" placeholder="Prenom" name="prenom" id="prenom" ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" placeholder="PSA Client" name="psa" id="psa" ngModel></ion-input>
+          <ion-input type="number" placeholder="PSA Client" name="psa" id="psa" ngModel required></ion-input>
         </ion-item>
         <ion-item lines="none">
-          <ion-button type="submit" slot="end">Enregistrer</ion-button>
+          <ion-button type="submit" [disabled]="client.invalid" slot="end">Enregistrer</ion-button>
         </ion-item>
       </form>
     </ion-card-content>
@@ -37,19 +37,19 @@
     <ion-card-content>
       <form #article="ngForm" (ngSubmit)="addArticle(article)" >
         <ion-item>
-          <ion-input type="text" placeholder="Code Article" name="code" id="code" ngModel ></ion-input>
+          <ion-input type="text" placeholder="Code Article" name="code" id="code" ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="text" placeholder="Nom Article" name="noma" id="noma" ngModel ></ion-input>
+          <ion-input type="text" placeholder="Nom Article" name="noma" id="noma" ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" placeholder="Prix" name="prix" id="prix" ngModel ></ion-input>
+          <ion-input type="number" placeholder="Prix" name="prix" id="prix" ngModel required></ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" placeholder="Quantite" name="quantite" id="quantite" ngModel ></ion-input>
+          <ion-input type="number" placeholder="Quantite" name="quantite" id="quantite" ngModel required></ion-input>
         </ion-item>
         <ion-item lines="none">
-          <ion-button type="submit" slot="end">Enregistrer</ion-button>
+          <ion-button type="submit" [disabled]="article.invalid" slot="end">Enregistrer</ion-button>
         </ion-item>
       </form>
     </ion-card-content>

@@ -18,7 +18,7 @@ export class FilterComponent implements OnInit {
 
  ngOnInit()
  {
-   this.tabclient = JSON.parse(localStorage.getItem('Client'));
+   this.tabclient = this.db.clients;
  }
 
  dismiss(){

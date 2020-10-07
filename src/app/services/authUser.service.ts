@@ -1,6 +1,8 @@
 import { Injectable, OnInit } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
+import { DBStorage } from './database.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,9 @@ export class AuthUser implements CanActivate {
            numero: '8912B8932',
            nom:  'Ali',
            prenom: 'baba',
+           mail: 'alexkabkabe@gmail.com',
+           adresse: 690148014,
+           telephone: 0,
            test: false,
            pseudo: 'alex',
            password: 'al'
@@ -25,6 +30,9 @@ export class AuthUser implements CanActivate {
            numero: '89MN83I9',
            nom:  'Kalicha',
            prenom: 'Mortone',
+           mail: 'alexkabkabe@gmail.com',
+           adresse: 690148014,
+           telephone: 0,
            test: true,
            pseudo: 'kabe',
            password: 'ka'
@@ -34,6 +42,9 @@ export class AuthUser implements CanActivate {
            numero: '891H29A',
            nom:  'Partage',
            prenom: 'Salla',
+           mail: 'alexkabkabe@gmail.com',
+           adresse: 690148014,
+           telephone: 0,
            test: true,
            pseudo: 'olivier',
            password: 'oli'
@@ -42,9 +53,11 @@ export class AuthUser implements CanActivate {
 
   selectId = null;
   constructor(private alertController: AlertController,
-              private router: Router)
+              private router: Router,
+              private storage: Storage)
   {
-    //this.users = JSON.parse(localStorage.getItem('Users'));
+    this.storage.set('Users', this.users);
+    //this.users = storage.get('Users');
   }
 
 
@@ -61,6 +74,7 @@ export class AuthUser implements CanActivate {
           {
               if (this.selectId.password === value.password)
               {
+                  this.storage.set('User', value);
                   return true;
               }
               else

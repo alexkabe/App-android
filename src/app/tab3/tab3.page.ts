@@ -68,18 +68,21 @@ export class Tab3Page implements OnInit  {
 
   async openClient()
   {
-    const modalClient = await this.modalController.create({
-      component: ClientPage,
-      cssClass: 'modal'
-    });
-    await modalClient.present();
-    const tabCli = await modalClient.onWillDismiss();
-    if (tabCli.data != null)
+    if (this.db.numliste === 0)
     {
-      this.numClient = tabCli.data;
-      this.numtest = 1;
-      this.numero =  1;
-      this.db.verif = true;
+      const modalClient = await this.modalController.create({
+        component: ClientPage,
+        cssClass: 'modal'
+      });
+      await modalClient.present();
+      const tabCli = await modalClient.onWillDismiss();
+      if (tabCli.data != null)
+      {
+        this.numClient = tabCli.data;
+        this.numtest = 1;
+        this.numero =  1;
+        this.db.verif = true;
+      }
     }
   }
   async onClose()
@@ -146,14 +149,14 @@ export class Tab3Page implements OnInit  {
       const tabArt = await modalArticle.onWillDismiss();
       if (tabArt.data)
       {
-        tabArt.data.base.quantite = tabArt.data.qte;
+
         if (this.articleChoisi.length !== 0)
         {
-          for (let article of this.articleChoisi)
+          for (let art of this.articleChoisi)
           {
-            if (tabArt.data.base.code === article.code)
+            if (art.code === tabArt.data.base.code)
             {
-              article.quantite = tabArt.data.base.quantite;
+              art.quantite = tabArt.data.base.quantite;
             }
             else
             {

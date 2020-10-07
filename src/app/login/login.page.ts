@@ -18,8 +18,8 @@ export class LoginPage {
     state: 'false'
   };
   constructor(private utilisateur: Users,
-    private router: Router,
-    private storage: Storage) {
+              private router: Router,
+              private storage: Storage) {
   }
 
   onSubmit(form: NgForm) {
@@ -38,7 +38,7 @@ export class LoginPage {
     {
       state: this.user
     };
-    this.storage.set('User', this.user);
+
     this.router.navigate(['/homepage/' + form.value.state], navigationExtra);
     form.reset();
   }

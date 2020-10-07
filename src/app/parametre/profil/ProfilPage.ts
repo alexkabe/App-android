@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
+
 @Component({
   selector: 'app-profil',
   templateUrl: './profil.page.html',
@@ -14,31 +15,27 @@ export class ProfilPage implements OnInit {
   mdp = '';
   constructor(private navigate: NavController,
               private alertController: AlertController,
-              private storage: Storage)
-  {
-      this.storage.get('User').then(val =>
-        {
-          this.user = val;
-        });
-      this.storage.get('Users').then(val =>
-      {
-        this.users = val;
-      });
+              private storage: Storage) {
+    this.storage.get('User').then(val => {
+      this.user = val;
+    });
+    this.storage.get('Users').then(val => {
+      this.users = val;
+    });
 
   }
 
   ngOnInit() {
   }
 
-  back()
-  {
+  back() {
     this.navigate.navigateRoot(['parametre']);
   }
   async presentAlert(message) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Notification',
-      message: message,
+      message,
       buttons: ['OK']
     });
 
@@ -66,7 +63,7 @@ export class ProfilPage implements OnInit {
           type: 'password',
           placeholder: 'Rewrite passeword',
           cssClass: 'specialClass',
-            attributes: {
+          attributes: {
             minlength: 6,
             maxlength: 15,
             inputmode: 'decimal'
@@ -84,14 +81,13 @@ export class ProfilPage implements OnInit {
         }, {
           text: 'Ok',
           handler: (alertData) => {
-            if (alertData.name === alertData.rename)
-            {
+            if (alertData.name === alertData.rename) {
               this.changeP(alertData);
-              this.alertController.dismiss({'bac': alertData});
+              this.alertController.dismiss({ bac: alertData });
               this.presentAlert('Mot de passe change avec succes!');
             }
-            else
-            {
+
+            else {
               this.presentAlert('Mot de passe non simillaire');
             }
           }
@@ -102,24 +98,20 @@ export class ProfilPage implements OnInit {
     await alert.present();
 
     const tab = await alert.onWillDismiss();
-  
-    if (tab.data)
-    {
+
+    if (tab.data) {
       this.mdp = tab.data.values.name;
     }
   }
 
-  changeP(alertData)
-  {
+  changeP(alertData) {
     let a = 0;
     console.log(alertData);
     this.user.password = alertData.name;
     this.storage.set('User', this.user);
 
-    for (let i = 0; i < this.users; i++)
-    {
-      if (this.users[i] === this.user.id)
-      {
+    for (let i = 0; i < this.users; i++) {
+      if (this.users[i] === this.user.id) {
         this.storage.remove('Users');
         a = i;
       }
@@ -130,8 +122,7 @@ export class ProfilPage implements OnInit {
   }
 
 
-  onSubmit(form)
-  {
+  onSubmit(form) {
     let a = 0;
 
     this.user.mail = form.value.mail;
@@ -140,10 +131,8 @@ export class ProfilPage implements OnInit {
     this.user.password = this.mdp;
     this.storage.set('User', this.user);
 
-    for (let i = 0; i < this.users; i++)
-    {
-      if (this.users[i] === this.user.id)
-      {
+    for (let i = 0; i < this.users; i++) {
+      if (this.users[i] === this.user.id) {
         this.storage.remove('Users');
         a = i;
       }
@@ -155,18 +144,17 @@ export class ProfilPage implements OnInit {
     form.reset();
   }
 
-  async profil()
-  {
+  async profil() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Mon Profil',
       message: 'Nom: ' + this.user.nom + '<br>' + '<br>' +
-               ' Prenom: ' + this.user.prenom + '<br>' + '<br>' +
-               'Mail: ' + this.user.mail + '<br>' + '<br>' +
-               'Pseudo: ' + this.user.pseudo + '<br>' + '<br>' +
-               ' Mot de passe: ' + this.user.password + '<br>' + '<br>' +
-               'Telephone: ' + this.user.telephone + '<br>' + '<br>' +
-               'Adresse: ' + this.user.adresse,
+        ' Prenom: ' + this.user.prenom + '<br>' + '<br>' +
+        'Mail: ' + this.user.mail + '<br>' + '<br>' +
+        'Pseudo: ' + this.user.pseudo + '<br>' + '<br>' +
+        ' Mot de passe: ' + this.user.password + '<br>' + '<br>' +
+        'Telephone: ' + this.user.telephone + '<br>' + '<br>' +
+        'Adresse: ' + this.user.adresse,
       buttons: ['OK']
     });
 

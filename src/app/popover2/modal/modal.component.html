@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Bluetooth Device
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+      
+<ion-content>
+  <ion-item ion-button (click)="startScanning()">
+      Lancer la recherche
+  </ion-item>
+  <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
+  
+  <ion-card>
+    <ion-card-header>Bluetooth disponible</ion-card-header>
+    <ion-card-content ion-item *ngFor='let device of unpairedDevices'>
+      <ion-item ion-button (click)="selectDevice(device.address)" >
+          {{device.name}}
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card >
+    <ion-card-header>Bluetooth Apparie</ion-card-header>
+    <ion-card-content ion-item *ngFor="let device of pairedDevices">
+      <ion-item ion-button (click)="selectDevice(device.address)">
+        {{device.name}}
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

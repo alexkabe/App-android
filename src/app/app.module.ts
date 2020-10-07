@@ -27,10 +27,15 @@ import { Auth } from './services/auth.service';
 import { Users } from './services/user.service';
 import { AuthUser } from './services/authUser.service';
 import { QuantiteComponent } from './article/quantite/quantite.component';
-import { BLE } from '@ionic-native/ble/ngx';
+import { Network } from '@ionic-native/network/ngx';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial/ngx';
+import { FilterComponent } from './filter/filter.component';
+import { ModalComponent } from './popover2/modal/modal.component';
+import { File } from '@ionic-native/file/ngx';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
 
 @NgModule({
-  declarations: [AppComponent, ClientPage, ArticlePage, StockPipe],
+  declarations: [AppComponent, ClientPage, FilterComponent, ModalComponent, ArticlePage, StockPipe],
   entryComponents: [],
   imports: [BrowserModule, HttpClientModule, ParametrePageModule, IonicModule.forRoot(), AppRoutingModule,
   IonicStorageModule.forRoot()],
@@ -44,10 +49,13 @@ import { BLE } from '@ionic-native/ble/ngx';
     FormBuilder,
     CovidDesease,
     Auth,
+    File,
+    FileOpener,
+    BluetoothSerial,
     AuthUser,
     Users,
     CommonModule,
-    BLE,
+    Network,
     ReactiveFormsModule,
     Popover2Component,
     ToastExample,

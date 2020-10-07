@@ -1,5 +1,6 @@
 export class Users {
 
+    users: {};
     user: any = {};
     constructor()
     {

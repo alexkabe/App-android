@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button fill="clear" slot="start" routerLink="/" routerDirection="forward">
+      <ion-icon name="arrow-back"></ion-icon>
+      <p>BacK</p>
+    </ion-button>
+    <ion-title>test</ion-title>
+      <ion-button slot="end">
+        <ion-icon name="bluetooth"></ion-icon>
+        <p>Scan</p>
+      </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-item>
+      <ion-button ion-button block (click)="look()">Imprimer</ion-button>
+    </ion-item>
+
+    <ion-list>
+        <ion-button ion-button block (click)="startScanning()">scan</ion-button>
+      
+        Paired Devices
+      
+      <ion-item *ngFor="let device of pairedDevices">
+        {{device.name}}
+      </ion-item>
+
+    </ion-list>
+    <ion-item>
+      <ion-button ion-button block (click)="disconnect()">Disconnect</ion-button>
+    
+      availlable Devices
+    
+    <ion-list ion-item *ngFor='let device of unpairedDevices'>
+      <span (click)="selectDevice(device.address)">
+        {{device.name}}
+      </span>
+    </ion-list>
+
+    </ion-item>
+    <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
+  
+  
+      <ion-item>
+        <ion-button ion-button (click)="sendDataToSerial()">Send data</ion-button>
+      </ion-item>
+  
+  </ion-content>

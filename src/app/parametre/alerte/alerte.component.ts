@@ -10,12 +10,12 @@ export class AlerteExample {
 
   constructor(public alertController: AlertController) {}
 
-  async presentAlert() {
+  async presentAlert(message) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      message,
       buttons: ['OK']
     });
 
@@ -28,9 +28,9 @@ export class AlerteExample {
       header: 'Change the password',
       inputs: [
         {
-          name: 'name8',
+          name: 'name',
           type: 'text',
-          placeholder: 'New passeword',
+          placeholder: 'New password',
           cssClass: 'specialClass',
           attributes: {
             minlength: 6,
@@ -39,9 +39,9 @@ export class AlerteExample {
           }
         },
         {
-          name: 'name8',
+          name: 'rename',
           type: 'text',
-          placeholder: 'Rewrite passeword',
+          placeholder: 'Rewrite password',
           cssClass: 'specialClass',
             attributes: {
             minlength: 6,
@@ -60,8 +60,15 @@ export class AlerteExample {
           }
         }, {
           text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
+          handler: (alertData) => {
+            if (alertData.name === alertData.rename)
+            {
+              this.alertController.dismiss({'bac': alertData.name});
+            }
+            else
+            {
+              this.presentAlert('Mot de passe incompatible');
+            }
           }
         }
       ]

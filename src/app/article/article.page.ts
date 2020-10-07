@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, ModalController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
-import { TabService } from '../services/client.service';
 import { DBStorage } from '../services/database.service';
 
 
@@ -46,10 +45,10 @@ export class ArticlePage implements OnInit {
           handler: (alertData) => {
               if (alertData.quantite)
               {
-                let i = alertData.quantite;
+                const i = alertData.quantite;
                 this.verif(i, choix).then(tar => {
                 this.temp = tar;
-                this.alertController.dismiss({'bac': i});
+                this.alertController.dismiss({bac: i});
                 });
               }
           }
@@ -58,18 +57,22 @@ export class ArticlePage implements OnInit {
     });
 
     await alert.present();
-
     const tab = await alert.onWillDismiss();
-    let sam = tab.data.values.quantite;
+    const choix2: any = {};
+    choix2.code = choix.code;
+    choix2.produit = choix.noma;
+    choix2.quantite = tab.data.values.quantite;
+    choix2.prix = choix.prix;
+    choix2.total = choix2.quantite * choix2.prix;
     if (this.temp)
     {
-      this.modalCtrl.dismiss({'base': choix, 'qte': sam});
+      this.modalCtrl.dismiss({base: choix2});
     }
   }
 
   async verif(i, choix)
   {
-    if (i  < choix.quantite + 1)
+    if (i  < choix.quantite + 1 && i > 0)
             {
               return true;
             }
@@ -77,7 +80,7 @@ export class ArticlePage implements OnInit {
             {
               this.alertController.create({
                 header: 'Desole!',
-                message: 'La quantite choisie est superieure a la quantite en stock!',
+                message: 'La quantite choisie est superieure a la quantite en stock ou invalide!',
                 buttons: ['Ok']
                 }).then(alert => alert.present());
               return false;

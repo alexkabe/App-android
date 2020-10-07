@@ -1,6 +1,5 @@
-
-  <ion-header>
-      <div class="titre">
+<ion-header>
+  <div class="titre">
         <div class="back">
           <ion-button slot="start" fill="clear" (click)="back()">
             <ion-icon name="arrow-back"></ion-icon>
@@ -8,7 +7,7 @@
         </div>
         Pseudo
         <div class="save">
-          <ion-button slot="end" fill="clear">
+          <ion-button slot="end" fill="clear" type="submit">
             <ion-icon name="save"></ion-icon>
           </ion-button>
           
@@ -20,27 +19,34 @@
         <p>Alexkabekabe@gmail.com</p>
       </div>
       
-  </ion-header>
+    </ion-header>
+  <ion-content>
+    
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
 
-
-<ion-content>
-  <form >
     <ion-item>
-      <ion-input placeholder="Mail"></ion-input>
+      <ion-input placeholder="Mail" name="mail" id="mail" ngModel required></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-input placeholder="Adresse"></ion-input>
+      <ion-input placeholder="Adresse" name="adresse" id="adresse" ngModel required></ion-input>
     </ion-item>
     
     <ion-item>
-      <ion-input placeholder="Telephone"></ion-input>
+      <ion-input placeholder="Tel" name="tel" id="tel" ngModel required></ion-input>
     </ion-item>
     
     <ion-item button (click)="openAlert()">
       <ion-label>Changer de mot passe</ion-label>
     </ion-item>
-  </form>
-</ion-content>
+    <div>
+      <ion-button shape="round" [disabled]="f.invalid" type="submit" fill="outline" expand="block" color="primary">Enregistrer</ion-button>
+    </div>
+  </form >
+
+  </ion-content>
+<ion-button color="success" (click)="profil()">
+  Mon profil
+</ion-button>
 
 

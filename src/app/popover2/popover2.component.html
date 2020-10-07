@@ -6,13 +6,13 @@
       <ion-label> Enregistrer</ion-label>
     </ion-item>
   
-    <ion-item button [disabled]="db.numliste === 0" fill="clear" (click)="printer()">
+    <ion-item button [disabled]="db.numliste === 0" fill="clear" (click)="generatePdf()">
       <ion-icon name="print" slot="start"></ion-icon>
       <ion-label>Imprimer</ion-label>
     </ion-item>
   
 
-    <ion-item button fill="clear" [disabled]="db.numliste === 0" (click)="dropFactend()">
+    <ion-item button fill="clear" [disabled]="db.numliste === 0" (click)="dropFact()">
       <ion-icon name="trash" slot="start"></ion-icon>
       <ion-label>Supprimer</ion-label>
     </ion-item>

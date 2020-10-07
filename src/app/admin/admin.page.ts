@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-admin',
@@ -21,7 +22,7 @@ export class AdminPage implements OnInit {
     prix: Number,
     quantite: Number
   };
-  constructor() { }
+  constructor(private storage: Storage) { }
 
   ngOnInit() {
   }
@@ -35,10 +36,10 @@ export class AdminPage implements OnInit {
     this.client.password = client.value.password;
 
     this.client = Object.assign(this.client, client.value);
-    let tabClient = [];
-    if (localStorage.getItem('Client'))
+    let tabClient: any = [];
+    if (this.storage.get('Client'))
         {
-            tabClient = JSON.parse(localStorage.getItem('Client'));
+            tabClient = this.storage.get('Client');
             tabClient = [this.client, ...tabClient];
         }
     else
@@ -46,7 +47,7 @@ export class AdminPage implements OnInit {
             tabClient = [this.client];
         }
 
-    localStorage.setItem('Client', JSON.stringify(tabClient));
+    this.storage.set('Client', tabClient);
     client.reset();
   }
 
@@ -58,10 +59,10 @@ export class AdminPage implements OnInit {
       this.article.quantite = article.value.quantite;
 
       this.article = Object.assign(this.article, article.value);
-      let tabArticle = [];
-      if (localStorage.getItem('Article'))
+      let tabArticle: any = [];
+      if (this.storage.get('Article'))
           {
-              tabArticle = JSON.parse(localStorage.getItem('Article'));
+              tabArticle = this.storage.get('Article');
               tabArticle = [this.article, ...tabArticle];
           }
       else
@@ -69,7 +70,7 @@ export class AdminPage implements OnInit {
               tabArticle = [this.article];
           }
 
-      localStorage.setItem('Article', JSON.stringify(tabArticle));
+      this.storage.set('Article', tabArticle);
       article.reset();
   }
 
