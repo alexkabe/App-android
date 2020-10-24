@@ -68,22 +68,13 @@ export class Tab3Page implements OnInit  {
 
   async openClient()
   {
-    if (this.db.numliste === 0)
-    {
       const modalClient = await this.modalController.create({
         component: ClientPage,
         cssClass: 'modal'
       });
       await modalClient.present();
       const tabCli = await modalClient.onWillDismiss();
-      if (tabCli.data != null)
-      {
-        this.numClient = tabCli.data;
-        this.numtest = 1;
-        this.numero =  1;
-        this.db.verif = true;
-      }
-    }
+     
   }
   async onClose()
   {

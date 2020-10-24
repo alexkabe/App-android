@@ -159,18 +159,12 @@ export class TestPage {
     return '{C|}';
   }
 
-  printWriteCommand(id: string, x: string, y: string, text: string): string {
-    // {PC000;0071,0131,1,1,S,00,B=Ornek Yaz|}  
-    return '{PC' + id + ';' + y + ',' + x + ',' + '1' + ',' + '1' + ',' + 'O' + ',' + '00' + ',' + 'B=' + text + '|}';
+  printWriteCommand( text: string): string {
+    return '{' + text + '}';
   }
 
   printDrawLine(xStartPoint, yStartPoint, xEndPoint, yEndPoint): string {
     return '{LC;' + yStartPoint + ',' + xStartPoint + ',' + yEndPoint + ',' + xEndPoint + ',' + '0' + ',' + '3|}';
-  }
-
-  generateBarcode(barcodeTotalNumber, x, y, rotationAngleOfBarcode, barcodeNumber): string {
-    // {XB00;0091,0440,A,3,03,0,0128,+0000000000,000,1,00=>512345678|}
-    return '{XB' + barcodeTotalNumber + ';' + x + ',' + y + ',' + 'A,3,03,' + rotationAngleOfBarcode + ',0128,+0000000000,000,1,00=>5' + barcodeNumber + '|}';
   }
 
   printConditions(): string {
@@ -181,15 +175,7 @@ export class TestPage {
     let toshibaPrintScript: string =
       this.declareLabelSize('0700', '0700', '0690') +
       this.cleanBuffer() +
-      this.printWriteCommand('00', '0050', '0010', 'Gonderici Adresi') +
-      this.printWriteCommand('01', '0100', '0010', 'Resitpasa Mahallesi Katar Caddesi') +
-      this.printWriteCommand('02', '0150', '0010', 'No:4/B3 Sariyer/Istanbul') +
-      this.printDrawLine('0160', '0000', '0160', '2000') +
-      this.printWriteCommand('03', '0200', '0010', 'Alici Adresi') +
-      this.printWriteCommand('04', '0250', '0010', 'Yenikoy Mahallesi Doganlar Caddesi') +
-      this.printWriteCommand('05', '0300', '0010', 'No:12/2 Savsat/Artvin') +
-      this.printDrawLine('0310', '0000', '0310', '2000') +
-      this.generateBarcode('00', '0200', '0460', '0', '12345678') +
+      this.printWriteCommand('Voici la page test de notre travil') +
       this.printConditions();
     return toshibaPrintScript;
   }

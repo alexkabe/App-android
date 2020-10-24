@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CovidDesease } from '../services/maladie.service';
-import { ModalController, NavController } from '@ionic/angular';
 import { ActivatedRoute,  NavigationExtras, Router} from '@angular/router';
 
 
@@ -27,7 +25,7 @@ export class Tab2Page implements OnInit {
 
   openModal(data)
   {
-    let navigationExtra: NavigationExtras =
+    const navigationExtra: NavigationExtras =
     {
       queryParams: {
         state: JSON.stringify(this.pays[data])

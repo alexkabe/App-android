@@ -4,6 +4,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { Users } from '../services/user.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: 'login.page.html',
@@ -28,8 +29,7 @@ export class LoginPage {
     const passe = form.value.password;
     this.user.password = passe;
 
-    const navigationExtra: NavigationExtras =
-    {
+    const navigationExtra: NavigationExtras = {
       state: this.user
     };
 

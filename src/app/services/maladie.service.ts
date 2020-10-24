@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Resolve } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { LoadingController } from '@ionic/angular';
 
 @Injectable({
     providedIn: 'root'
